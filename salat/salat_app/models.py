@@ -10,3 +10,6 @@ class Loan(models.Model):
     information = models.ForeignKey(BasicInfo, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=7, decimal_places=2)
     due_date = models.DateField()
+
+class CSVFile(models.Model):
+    file = models.FileField()
