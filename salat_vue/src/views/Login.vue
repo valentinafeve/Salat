@@ -1,0 +1,72 @@
+<template id="login">
+  <div class="login">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg card">
+        <div class="title">
+          Ingresa tus credenciales y consulta tus estados financieros.
+        </div>
+        <hr id="hr1"><hr id="hr2">
+        <div class="w-full max-w-sm">
+          <div class="md:items-center mb-6">
+            <div class="flex items-center border-b border-b-2 border-gray-400 py-2">
+              <input id="username_input" placeholder="Usuario" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" style="display:block;" type="text" v-bind:value="username">
+            </div>
+            <div class="flex items-center border-b border-b-2 border-gray-400 py-2">
+              <input id="username_input" placeholder="Contraseña" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" style="display:block;" type="text" v-bind:value="username">
+            </div>
+            <button class="bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>
+</template>
+<script type="text/javascript">
+export default {
+  name: 'Login',
+  data(){
+    return {
+      username:'',
+      password:''
+    }
+  }
+}
+</script>
+<style media="screen">
+.login .card {
+  padding: 50px;
+  width: 100%;
+  position: relative;
+}
+
+.login .title {
+  font-size: 1.5em;
+  margin-bottom: 40px;
+}
+
+.login input{
+  width: 90%;
+  font-size: 1.2em;
+  margin-top:20px;
+  position: relative;
+}
+
+.login button {
+  font-size: 1.2em;
+  margin-top:40px;
+  width: 60%;
+}
+
+#hr1{
+  width: 20%;
+  display:inline-block;
+  border-top: 2px solid #E53E3E;
+}
+
+#hr2{
+  display:inline-block;
+  width: 10%;
+  border-top: 2px solid #987db7;
+}
+
+</style>
