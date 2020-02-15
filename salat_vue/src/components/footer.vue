@@ -11,6 +11,7 @@
         <div class="info">
           7565076
         </div>
+        <div class="vl"/>
       </div>
       <div class="item">
         <div class="icon">
@@ -22,6 +23,7 @@
         <div class="info">
           asociados@fondecol.co
         </div>
+        <div class="vl"/>
       </div>
       <div class="item">
         <div class="icon">
@@ -52,6 +54,7 @@ export default {
   width: 100%;
   height: 270px;
   color: white;
+  position: relative;
   margin-top: 30px;
   padding-top: 40px;
   padding-bottom: 90px;
@@ -65,6 +68,7 @@ export default {
   vertical-align: top;
   min-width: 120px;
   display: inline-block;
+  position: relative;
 }
 
 .footer .item .icon img{
@@ -77,8 +81,21 @@ export default {
   margin-bottom: 10px;
 }
 .footer .more_info{
-  margin-top: 30px;
+  padding-top: 15px;
   font-size: 0.9em;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  position: absolute;
+  background: #ED0722;
+}
+
+.footer .vl {
+  border-left: 1.5px solid #9e9ead;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 </style>
