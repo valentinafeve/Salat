@@ -9,7 +9,7 @@
           Llámanos
         </div>
         <div class="info">
-          7565076
+          1234567
         </div>
         <div class="vl"/>
       </div>
@@ -21,7 +21,7 @@
           ¿Necesitas información?
         </div>
         <div class="info">
-          asociados@fondecol.co
+          email@unemail.com
         </div>
         <div class="vl"/>
       </div>
@@ -33,7 +33,7 @@
           ¿Dónde estámos?
         </div>
         <div class="info">
-          Calle 24 No. 9 – 31 Oficina 209, Bogotá, Cundinamarca, 110111, CO
+          Dirección, Bogotá, Colombia
         </div>
       </div>
     </div>

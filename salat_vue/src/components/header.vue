@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="header">
     <div class="title">
-      <img src="https://fondecol.co/wp-content/uploads/2017/10/logo2.png" alt="" style="height: 70px;">
+      A bank
     </div>
     <hr id="hr-header1">
     <hr id="hr-header2">

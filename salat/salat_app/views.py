@@ -14,12 +14,12 @@ class CSVFileView(viewsets.ModelViewSet):
     queryset = CSVFile.objects.all()
     serializer_class = CSVFileSerializer
 
-def load_csv(request):
+def loadfiles(request):
     if request.method == 'POST':
         if request.FILES['csv1'] and request.FILES['csv2']:
             try:
                 file1 = request.FILES['csv1']
                 file1 = request.FILES['csv2']
-                retutn Response({status: 1},  status=status.HTTP_201_CREATED)
+                return Response({status: 1},  status=status.HTTP_201_CREATED)
             except Exception as e:
                 return Response({ error:str(e) }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
