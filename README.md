@@ -1,7 +1,16 @@
 # Salat
 
+## Installing django
 
-Setting the database
+> Once Python and pip is installed
+
+```bash
+pip install django
+pip install django-rest-framework
+pip install django-rest-auth
+```
+
+## Setting the database
 
 ```sql
 CREATE DATABASE Salat;
