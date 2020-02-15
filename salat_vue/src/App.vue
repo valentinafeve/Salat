@@ -1,18 +1,22 @@
 <template>
   <div id="app">
-    <Information/>
-    <Login/>
+    <Header/>
+    <div id="main_container">
+      <router-View></router-View>
+    </div>
+    <Footer/>
   </div>
 </template>
 
 <script>
-import Login from './views/Login'
-import Information from './views/Information'
+import Header from './components/header.vue'
+import Footer from './components/footer.vue'
+
 export default {
   name: 'App',
   components: {
-    Login,
-    Information
+    Header,
+    Footer
   }
 }
 </script>
@@ -24,6 +28,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
+  width: 100%;
+  background: url("https://cdn.pixabay.com/photo/2018/12/25/11/10/deer-3894103_960_720.png");
+}
+#main_container{
+  width: 100%;
+  padding-top: 20px;
 }
 </style>

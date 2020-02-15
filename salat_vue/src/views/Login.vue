@@ -1,6 +1,6 @@
 <template id="login">
   <div class="login">
-    <div class="max-w-sm rounded overflow-hidden shadow-lg card">
+    <div class="rounded overflow-hidden shadow-lg items-center card">
         <div class="title">
           Ingresa tus credenciales y consulta tus estados financieros.
         </div>
@@ -13,7 +13,7 @@
             <div class="flex items-center border-b border-b-2 border-gray-400 py-2">
               <input id="username_input" placeholder="Contraseña" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" style="display:block;" type="text" v-bind:value="username">
             </div>
-            <button class="bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button @click="login" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
               Login
             </button>
           </div>
@@ -29,19 +29,28 @@ export default {
       username:'',
       password:''
     }
+  },
+  methods:{
+    login(){
+      this.$router.push('/information')
+      // this.$router.push('/loader')
+    }
   }
 }
 </script>
 <style media="screen">
 .login .card {
   padding: 50px;
-  width: 100%;
-  position: relative;
+  min-width: 150px;
+  width: 40%;
+  background: white;
+  margin: 0 auto;
 }
 
 .login .title {
   font-size: 1.5em;
   margin-bottom: 40px;
+  text-align: left;
 }
 
 .login input{
@@ -66,7 +75,7 @@ export default {
 #hr2{
   display:inline-block;
   width: 10%;
-  border-top: 2px solid #987db7;
+  border-top: 2px solid #9966ff;
 }
 
 </style>

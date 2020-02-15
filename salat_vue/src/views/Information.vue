@@ -1,26 +1,37 @@
 <template id="information">
   <div class="information">
-    <div class="max-w-sm rounded overflow-hidden shadow-lg card">
+    <div class="rounded overflow-hidden shadow-lg card items-center card">
         <div class="title">
           Resultados para los últimos X años.
         </div>
         <hr id="hr1"><hr id="hr2">
-        <div class="w-full max-w-sm">
+        <div class="w-full">
           <div class="md:items-center mb-6">
+            <div id="data_results">
+              <div class="">
+                Nombre: {{ name }}
+              </div>
+              <div class="">
+                Dirección: {{ address }}
+              </div>
+              <div class="loans">
+                <div class="loan">
+                  Loan
+                </div>
+              </div>
 
-            <div class="data_results">
-              Data
             </div>
-
-            <button class="bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Send to email
-            </button>
-            <button @click="to_pdf" class="bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Export PDF
-            </button>
-            <button class="bg-red-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Login
-            </button>
+            <div class="buttons">
+              <button @click="to_pdf" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Exportar a PDF
+              </button>
+              <button @click="to_email" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Enviar por correo
+              </button>
+              <button @click="to_print" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -28,14 +39,20 @@
 </template>
 <script type="text/javascript">
 import $ from 'jquery';
-import jsPDF from 'jsPDF';
+import jsPDF from 'jspdf';
 
 export default {
   name: 'Login',
   data(){
     return {
-      username:'',
-      password:''
+      name: 'Dorothy Valencia',
+      address: 'Cra 10 #65 - 32',
+      loans: [
+        {
+          ref: '6317893',
+          amount: 20000,
+        }
+      ]
     }
   },
   methods:{
@@ -44,6 +61,8 @@ export default {
       var elementHTML = $('#data_results').html();
       var specialElementHandlers = {
           '#elementH': function (element, renderer) {
+              console.log(element)
+              console.log(renderer)
               return true;
           }
       };
@@ -53,14 +72,46 @@ export default {
       });
 
       // Save the PDF
-      doc.save('sample-document.pdf');
+      var d = new Date()
+      doc.save('fondecol_'+d.getTime()+'.pdf');
+    },
+    to_email(){
+      window.open('mailto:test@example.com?subject=subject&body=body');
+    },
+    to_print(){
+      var originalContent = window.document.body.innerHTML;
+      var elementHTML = document.getElementById('data_results');
+      console.log(elementHTML);
+      window.document.body.innerHTML = elementHTML.innerHTML;
+      window.print();
+      window.document.body.innerHTML = originalContent;
     }
   }
 }
 </script>
 <style media="screen">
+.information .card {
+  display: block;
+  padding: 40px;
+  width: 80%;
+  margin: 0 auto;
+  background: white;
+}
+
 .information .title {
   font-size: 1.5em;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
+}
+.information .buttons {
+  margin-top: 60px;
+}
+.information .buttons button{
+  margin: 0 auto;
+  width: 240px;
+  margin-bottom: 10px;
+  display: block;
+}
+#data_results{
+  margin: 30px;
 }
 </style>
