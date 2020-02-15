@@ -1,0 +1,5 @@
+[client]
+database = Salat
+user = 'django'
+password = 'sSal281sT'
+default-character-set = utf8

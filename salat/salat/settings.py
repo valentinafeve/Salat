@@ -77,7 +77,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': './mysql.cnf',
+            'read_default_file': '/home/vale/Git/Salat/salat/salat/mysql.cnf',
         },
     }
 }
