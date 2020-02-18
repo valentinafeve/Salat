@@ -14,7 +14,7 @@ class Book(models.Model):
     name = models.CharField(max_length=100, default='')
     author = models.CharField(max_length=100, default='')
 
-class Order(models.Model):
+class Loan(models.Model):
     user = models.ForeignKey(BasicInfo, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     loan_date = models.DateField()
