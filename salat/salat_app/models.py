@@ -9,15 +9,15 @@ class BasicInfo(models.Model):
     last_name = models.CharField(max_length=50, blank=True)
     age = models.IntegerField(default=18)
 
-class Salat(models.Model):
+class Book(models.Model):
     code = models.CharField(max_length=50, primary_key=True, default='')
-    name = models.TextField(default='void')
-    price = models.DecimalField(max_digits=7, decimal_places=2)
+    name = models.CharField(max_length=100, default='')
+    author = models.CharField(max_length=100, default='')
 
 class Order(models.Model):
     user = models.ForeignKey(BasicInfo, on_delete=models.CASCADE)
-    salat = models.ForeignKey(Salat, on_delete=models.CASCADE)
-    ordered_date = models.DateField()
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    loan_date = models.DateField()
 
 class CSVFile(models.Model):
     file = models.FileField()
