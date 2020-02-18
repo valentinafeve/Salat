@@ -5,13 +5,18 @@ from django.db import models
 # Create your models here.
 class BasicInfo(models.Model):
     national_id = models.CharField(max_length=50)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=50, blank=True)
     age = models.IntegerField(default=18)
 
 class Salat(models.Model):
-    user = models.ForeignKey(BasicInfo, on_delete=models.CASCADE)
+    code = models.CharField(max_length=50, primary_key=True, default='')
     name = models.TextField(default='void')
     price = models.DecimalField(max_digits=7, decimal_places=2)
+
+class Order(models.Model):
+    user = models.ForeignKey(BasicInfo, on_delete=models.CASCADE)
+    salat = models.ForeignKey(Salat, on_delete=models.CASCADE)
     ordered_date = models.DateField()
 
 class CSVFile(models.Model):
