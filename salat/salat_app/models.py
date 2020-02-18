@@ -6,12 +6,13 @@ from django.db import models
 class BasicInfo(models.Model):
     national_id = models.CharField(max_length=50)
     name = models.CharField(max_length=100)
-    score = models.DecimalField(max_digits=5, decimal_places=2)
+    age = models.IntegerField(default=18)
 
-class Loan(models.Model):
-    information = models.ForeignKey(BasicInfo, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=7, decimal_places=2)
-    due_date = models.DateField()
+class Salat(models.Model):
+    user = models.ForeignKey(BasicInfo, on_delete=models.CASCADE)
+    name = models.TextField(default='void')
+    price = models.DecimalField(max_digits=7, decimal_places=2)
+    ordered_date = models.DateField()
 
 class CSVFile(models.Model):
     file = models.FileField()

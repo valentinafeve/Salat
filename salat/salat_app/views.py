@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 class BasicInfoView(APIView):
-    def post(self, request):
+    def get(self, request):
         return None
 
 class CSVFileView(APIView):
@@ -30,7 +30,7 @@ class CSVFileView(APIView):
 
                 for line in file1.readlines():
                     print(line.decode("utf-8"))
-                    
+
                 return Response({'status': 'ok'}, status=status.HTTP_201_CREATED)
             return Response({}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
