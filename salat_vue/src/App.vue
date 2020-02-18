@@ -34,6 +34,7 @@ export default {
 }
 #main_container{
   width: 100%;
-  padding-top: 20px;
+  padding-top: 50px;
+  padding-bottom: 40px;
 }
 </style>

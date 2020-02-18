@@ -47,7 +47,7 @@ export default {
 
         axios.post('/')
 
-        var authenticated = 1;
+        var authenticated = 2;
 
         // Is an administrator
         if(authenticated == 1){
