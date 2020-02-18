@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class BasicInfo(models.Model):
-    national_id = models.CharField(max_length=50)
+    national_id = models.CharField( primary_key=True, max_length=50)
     name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50, blank=True)
     age = models.IntegerField(default=18)
