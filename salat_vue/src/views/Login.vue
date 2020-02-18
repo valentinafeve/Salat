@@ -28,6 +28,8 @@
   </div>
 </template>
 <script type="text/javascript">
+import axios from 'axios';
+
 export default {
   name: 'Login',
   data(){
@@ -42,6 +44,9 @@ export default {
   methods:{
     login(){
       if (this.username.length > 2 && this.password.length > 2){
+
+        axios.post('/')
+
         var authenticated = 1;
 
         // Is an administrator

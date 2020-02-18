@@ -8,5 +8,7 @@ class BasicInfoSerializer(serializers.ModelSerializer):
 
 class CSVFileSerializer(serializers.ModelSerializer):
     class Meta:
+        read_only = True
+        required = False
         model = CSVFile
         fields = ('file',)
