@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from app_sessions import views as session_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', session_views.login),
     path('', include('salat_app.urls')),
 ]

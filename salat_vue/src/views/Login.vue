@@ -30,6 +30,22 @@
 <script type="text/javascript">
 import axios from 'axios';
 
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 export default {
   name: 'Login',
   data(){
@@ -45,9 +61,20 @@ export default {
     login(){
       if (this.username.length > 2 && this.password.length > 2){
 
-        axios.post('/')
+        var csrftoken = getCookie('csrftoken');
 
-        var authenticated = 2;
+        var authenticated = -1;
+        const url = 'http://localhost:8000/login/'
+
+        const options = {
+          method: 'POST',
+          headers: { 'X-CSRFToken': csrftoken },
+          data: { 'username': this.username },
+          xsrfHeaderName: 'X-CSRFToken',
+          withCredentials : true,
+          url,
+        };
+        axios(options);
 
         // Is an administrator
         if(authenticated == 1){

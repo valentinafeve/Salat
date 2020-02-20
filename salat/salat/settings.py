@@ -40,9 +40,13 @@ INSTALLED_APPS = [
 
     #Added
     'rest_framework',
+    'corsheaders',
 
     #Own
     'salat_app',
+    'app_sessions',
+
+
 ]
 
 MIDDLEWARE = [
@@ -53,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'salat.urls'
@@ -146,12 +151,17 @@ LOGGING = {
     },
 }
 
-#
-# REST_FRAMEWORK = {
-#     'DEFULT_PERMISSIONS_CLASSES':(
-#         'rest_framework.permissions.IsAuthenticated',
-#     ),
-#     'DEFAULT_AUTHENTICATION_CLASSES':(
-#         'rest_framework.authentication.SessionAuthentication'
-#     )
-# }
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ORIGIN_WHITELIST = (
+#        'http://localhost:8080',
+# )
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticated'
+    )
+}
