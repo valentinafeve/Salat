@@ -28,7 +28,7 @@
   </div>
 </template>
 <script type="text/javascript">
-import axios from 'axios';
+var $ = require('jquery');
 
 function getCookie(name) {
     var cookieValue = null;
@@ -68,7 +68,7 @@ export default {
 
         var csrftoken = getCookie('csrftoken');
 
-        		$.ajaxSetup({
+        $.ajaxSetup({
             beforeSend: function(xhr, settings) {
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -76,21 +76,24 @@ export default {
             }
         });
 
-        const options = {
-          method: 'POST',
-          headers: {
-            "X-CSRFToken": getCookie("csrftoken"),
-            "Cookie": 'csrftoken='+getCookie("csrftoken"),
+        $.ajax({
+          url: 'http://localhost:8000/login/',
+          type: "POST",
+          xhrFields: {
+            withCredentials: true           // allow passing cookies
           },
           data: {
             'username': this.username,
-            'csrftoken': csrftoken,
+            'password': this.password,
+            'csrfmiddlewaretoken': csrftoken,
           },
-          xsrfHeaderName: 'X-CSRFToken',
-          url,
-        };
-        axios(options);
+          dataType: 'json',
+          success: function () {
+            console.log("success")
+          }
+        });
 
+        var authenticated = -1;
         // Is an administrator
         if(authenticated == 1){
           this.$router.push('/loader')
