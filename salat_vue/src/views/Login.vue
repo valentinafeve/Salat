@@ -46,6 +46,11 @@ function getCookie(name) {
     return cookieValue;
 }
 
+function csrfSafeMethod(method) {
+  // these HTTP methods do not require CSRF protection
+  return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
 export default {
   name: 'Login',
   data(){
@@ -63,15 +68,25 @@ export default {
 
         var csrftoken = getCookie('csrftoken');
 
-        var authenticated = -1;
-        const url = 'http://localhost:8000/login/'
+        		$.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
 
         const options = {
           method: 'POST',
-          headers: { 'X-CSRFToken': csrftoken },
-          data: { 'username': this.username },
+          headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+            "Cookie": 'csrftoken='+getCookie("csrftoken"),
+          },
+          data: {
+            'username': this.username,
+            'csrftoken': csrftoken,
+          },
           xsrfHeaderName: 'X-CSRFToken',
-          withCredentials : true,
           url,
         };
         axios(options);
